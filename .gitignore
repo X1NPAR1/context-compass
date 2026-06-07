@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.context-compass/
+/archive/
+text-sheet/
+*.tgz
+coverage/
+.DS_Store

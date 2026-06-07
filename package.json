@@ -1,0 +1,80 @@
+{
+  "name": "context-compass",
+  "version": "0.1.0",
+  "description": "Git co-edit zekâsını kullanarak Claude Code için davranışsal kod bağlamı.",
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "main": "dist/cli.js",
+  "bin": {
+    "context-compass": "dist/cli.js"
+  },
+  "files": [
+    "dist/"
+  ],
+  "keywords": [
+    "claude-code",
+    "mcp",
+    "model-context-protocol",
+    "code-intelligence",
+    "tree-sitter",
+    "developer-tools",
+    "git"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/X1NPAR1/context-compass.git"
+  },
+  "homepage": "https://github.com/X1NPAR1/context-compass",
+  "bugs": {
+    "url": "https://github.com/X1NPAR1/context-compass/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsx src/cli.ts",
+    "clean": "node scripts/clean.cjs",
+    "prepack": "npm run clean && npm run build",
+    "security:scan": "node scripts/secret-scan.cjs",
+    "release:check": "npm run typecheck && npm audit --omit=dev && npm run security:scan && npm pack --dry-run",
+    "test": "vitest run --coverage",
+    "test:unit": "vitest run tests/unit --coverage",
+    "test:integration": "vitest run tests/integration",
+    "test:smoke": "node scripts/ci-smoke.cjs",
+    "ci:verify": "npm run typecheck && npm run security:scan && npm run build && npm run test:unit && npm run test:integration && npm run test:smoke && npm run release:check"
+  },
+  "overrides": {
+    "@hono/node-server": "^1.19.13",
+    "hono": "^4.12.12"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "chokidar": "^4.0.3",
+    "commander": "^14.0.3",
+    "js-tiktoken": "^1.0.21",
+    "simple-git": "^3.33.0",
+    "sql.js": "^1.14.1",
+    "tree-sitter": "^0.21.1",
+    "tree-sitter-c-sharp": "^0.21.3",
+    "tree-sitter-go": "^0.21.2",
+    "tree-sitter-java": "^0.21.0",
+    "tree-sitter-javascript": "^0.21.4",
+    "tree-sitter-kotlin": "^0.3.8",
+    "tree-sitter-php": "^0.23.12",
+    "tree-sitter-python": "^0.21.0",
+    "tree-sitter-ruby": "^0.21.0",
+    "tree-sitter-rust": "^0.21.0",
+    "tree-sitter-typescript": "^0.21.2",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/sql.js": "^1.4.11",
+    "@vitest/coverage-v8": "^2.1.9",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.9"
+  }
+}

@@ -1,0 +1,38 @@
+name: Dil isteği
+description: Context Compass'a yeni bir programlama dili desteği isteyin
+labels: ["enhancement", "language"]
+body:
+  - type: input
+    id: language
+    attributes:
+      label: İstenen dil
+      description: Desteklenmesini istediğiniz dilin adı
+      placeholder: örn. Swift
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Kullanım senaryosu
+      description: Bu dille hangi depo/görevi çalıştırmak istiyorsunuz
+      placeholder: Projenizi ve beklenen iş akışlarını açıklayın.
+    validations:
+      required: true
+
+  - type: textarea
+    id: parser-ecosystem
+    attributes:
+      label: Ayrıştırıcı ekosistemi notları (opsiyonel)
+      description: Bilinen herhangi bir tree-sitter grameri paketi veya ayrıştırıcı ayrıntısı
+      placeholder: örn. tree-sitter-swift paketi, dile özgü söz dizimi kaygıları
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Onay
+      options:
+        - label: Yinelenenleri önlemek için mevcut issue'ları aradım
+          required: true
